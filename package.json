@@ -1,0 +1,25 @@
+{
+  "name": "app-mvp",
+  "version": "1.0.0",
+  "description": "weight checker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abimaelhernandez/App-mvp.git"
+  },
+  "author": "Abimael Hernandez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abimaelhernandez/App-mvp/issues"
+  },
+  "homepage": "https://github.com/abimaelhernandez/App-mvp#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mysql": "^2.15.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
+}
