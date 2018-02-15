@@ -954,6 +954,10 @@ var _jquery = __webpack_require__(27);
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
+var _addUserWeight = __webpack_require__(28);
+
+var _addUserWeight2 = _interopRequireDefault(_addUserWeight);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -986,18 +990,24 @@ var App = function (_React$Component) {
   _createClass(App, [{
     key: 'getWeight',
     value: function getWeight() {
+      var _this2 = this;
 
       _jquery2.default.ajax({
-        url: '/localhost',
+        url: '/showme',
         method: 'GET',
-        success: function success(results) {
-          //  this.setState({list: results})
+        success: function success(UserRecords) {
+          _this2.setState();
         },
         error: function error(xhr, err) {
           console.log('err,err');
         }
       });
     }
+
+    // componentDidMount(){
+    //   this.getWeight();
+    // }
+
   }, {
     key: 'render',
     value: function render() {
@@ -1007,8 +1017,9 @@ var App = function (_React$Component) {
         _react2.default.createElement(
           'h1',
           null,
-          'Helo Worl!!'
-        )
+          'Please Do'
+        ),
+        _react2.default.createElement(_addUserWeight2.default, null)
       );
     }
   }]);
@@ -28696,6 +28707,90 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var UserWeight = function (_React$Component) {
+  _inherits(UserWeight, _React$Component);
+
+  function UserWeight() {
+    _classCallCheck(this, UserWeight);
+
+    var _this = _possibleConstructorReturn(this, (UserWeight.__proto__ || Object.getPrototypeOf(UserWeight)).call(this));
+
+    _this.state = {
+      height: '',
+      name: ''
+      // TODO the bindind of your set.state
+    };_this.handleName = _this.handleName.bind(_this);
+    _this.handleHeight = _this.handleHeight.bind(_this);
+    return _this;
+  }
+
+  _createClass(UserWeight, [{
+    key: 'handleHeight',
+    value: function handleHeight(event) {
+      this.setState({ height: event.target.value });
+    }
+  }, {
+    key: 'handleName',
+    value: function handleName(event) {
+      this.setState({ name: event.target.value });
+    }
+  }, {
+    key: 'addName',
+    value: function addName() {
+      this.props.addUserInfo(this.state.height, this.state.name);
+      this.setState({ height: '', name: '' });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        'height:',
+        _react2.default.createElement('input', { value: this.state.height, onChange: this.handleHeight }),
+        _react2.default.createElement('br', null),
+        'name:',
+        _react2.default.createElement('input', { value: this.state.name, onChange: this.handleName }),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'button',
+          { onClick: this.addName },
+          ' Reality Check '
+        )
+      );
+    }
+  }]);
+
+  return UserWeight;
+}(_react2.default.Component);
+
+exports.default = UserWeight;
 
 /***/ })
 /******/ ]);

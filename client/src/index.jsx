@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import UserWeight from './components/addUserWeight.jsx';
+
 
 
  class App extends React.Component {
@@ -26,14 +28,12 @@ the get functions and the post
 
 
 
-
 getWeight(){
-
     $.ajax({
-      url: '/localhost',
+      url: '/showme',
       method: 'GET',
-      success:(results) => {
-      //  this.setState({list: results})
+      success:(UserRecords) => {
+      this.setState()
       },
       error : (xhr, err) => {
         console.log('err,err');
@@ -41,9 +41,14 @@ getWeight(){
     })
   }
 
+  // componentDidMount(){
+  //   this.getWeight();
+  // }
+
   render () {
     return (<div>
-      <h1>Helo Worl!!</h1>
+      <h1>Please Do</h1>
+      <UserWeight />
     </div>)
   }
 
