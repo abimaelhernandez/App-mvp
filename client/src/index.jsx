@@ -1,14 +1,16 @@
 import React from 'react';
-import ReactDom from 'react';
+import ReactDOM from 'react-dom';
+import $ from 'jquery';
 
- class App extends React.component {
+
+ class App extends React.Component {
    constructor(props){
-     super(props);
-      this.set = {
+     super();
+      this.state = {
         list :[]
       }
 
-   // TODO the binding of wht ever components when you incoorporate server
+   // TODO the binding of wht ever components
 
    }
 
@@ -31,7 +33,7 @@ getWeight(){
       url: '/localhost',
       method: 'GET',
       success:(results) => {
-        this.setState({list: results})
+      //  this.setState({list: results})
       },
       error : (xhr, err) => {
         console.log('err,err');
@@ -39,15 +41,12 @@ getWeight(){
     })
   }
 
-
-
-
-
-
-
-
-
+  render () {
+    return (<div>
+      <h1>Helo Worl!!</h1>
+    </div>)
+  }
 
 
  }
-React.render(<App / >, document.getElementById('app'));
+ReactDOM.render(<App/>, document.getElementById('app'));
