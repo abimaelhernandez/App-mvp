@@ -16,9 +16,9 @@ var selectAll = function(cb) {
   });
 };
 
-var insertOne = function(Height, Name, cb) {
+var insertOne = function(height, Name, cb) {
   con.query('INSERT INTO groceries (description, quantity) VALUES (?, ?)',
-    [Height, Name], (err, results, fields) => {
+    [height, Name], (err, results, fields) => {
       if(err) {
         cb(err, null);
       } else {
