@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import UserWeight from './components/addUserWeight.jsx';
-
+import UserList from './components/UserList.jsx'
 
 
  class App extends React.Component {
@@ -20,19 +20,25 @@ import UserWeight from './components/addUserWeight.jsx';
 
 the get functions and the post
 */
-
-
-
-
-
-
-
+consultGuru(heigth,name){
+  $.ajax({
+    method: "POST",
+    url: "/showme",
+    contentType: 'application/jason',
+    data: JSON.stringify({
+      height: height,
+      name: name
+    })
+  }).done(() => {
+    this.getWeight();
+  })
+}
 
 getWeight(){
     $.ajax({
       url: '/showme',
       method: 'GET',
-      success:(UserRecords) => {
+      success:({UserRecords}) => {
       this.setState()
       },
       error : (xhr, err) => {
@@ -41,15 +47,17 @@ getWeight(){
     })
   }
 
-  // componentDidMount(){
-  //   this.getWeight();
-  // }
+ componentDidMount(){
+   this.getWeight();
+ }
 
   render () {
-    return (<div>
+    return (
+      <div>
       <h1>Please Do</h1>
-      <UserWeight />
-    </div>)
+        <UserWeight addItem={this.consultGuru}/>
+        <UserList list={this.state.list}/>
+      </div>)
   }
 
 

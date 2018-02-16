@@ -1,13 +1,13 @@
 import React from 'react';
 
 class UserWeight extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       height: '',
       name: ''
     }
-    // TODO the bindind of your set.state
+    this.addName = this.addName.bind(this);
     this.handleName = this.handleName.bind(this);
     this.handleHeight = this.handleHeight.bind(this);
   }
@@ -21,7 +21,7 @@ class UserWeight extends React.Component {
   }
 
   addName() {
-    this.props.addUserInfo(this.state.height, this.state.name);
+    this.props.UserWeight(this.state.height, this.state.name);
     this.setState({height: '', name: ''})
   }
 

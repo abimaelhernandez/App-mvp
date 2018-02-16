@@ -1,8 +1,32 @@
-module.exports = {
-  UserRecords: [
-                {id: 1, Height: 5, name: "Joseph"},
-                {id: 2, Height: 10,name: "Jack"},
-                {id: 3, Height: 2, name: "Abimael"},
-                {id: 4, Height: 1, name: "Marco"}
-              ]
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  database: "review"
+});
+
+var selectAll = function(cb) {
+  con.query('SELECT * FROM WeightTable', (err, results, fields)=> {
+    if(err) {
+      cb(err, null);
+    } else {
+      cb(null, results);
+    }
+  });
 };
+
+var insertOne = function(Height, Name, cb) {
+  con.query('INSERT INTO groceries (description, quantity) VALUES (?, ?)',
+    [Height, Name], (err, results, fields) => {
+      if(err) {
+        cb(err, null);
+      } else {
+        console.log(results);
+        cb(null, results);
+      }
+    });
+};
+
+module.exports.selectAll = selectAll;
+module.exports.insertOne = insertOne;
