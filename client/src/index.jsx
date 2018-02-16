@@ -7,7 +7,7 @@ import UserList from './components/UserList.jsx'
 
  class App extends React.Component {
    constructor(props){
-     super();
+     super(props);
       this.state = {
         list :[]
       }
@@ -20,7 +20,7 @@ import UserList from './components/UserList.jsx'
 
 the get functions and the post
 */
-consultGuru(heigth,name){
+consultGuru(height,name){
   $.ajax({
     method: "POST",
     url: "/showme",
@@ -55,7 +55,7 @@ getWeight(){
     return (
       <div>
       <h1>Please Do</h1>
-        <UserWeight addItem={this.consultGuru}/>
+        <UserWeight UserWeight={this.consultGuru}/>
         <UserList list={this.state.list}/>
       </div>)
   }

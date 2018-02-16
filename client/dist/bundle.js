@@ -976,7 +976,7 @@ var App = function (_React$Component) {
   function App(props) {
     _classCallCheck(this, App);
 
-    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
     _this.state = {
       list: []
@@ -994,7 +994,7 @@ var App = function (_React$Component) {
 
   _createClass(App, [{
     key: 'consultGuru',
-    value: function consultGuru(heigth, name) {
+    value: function consultGuru(height, name) {
       var _this2 = this;
 
       _jquery2.default.ajax({
@@ -1043,7 +1043,7 @@ var App = function (_React$Component) {
           null,
           'Please Do'
         ),
-        _react2.default.createElement(_addUserWeight2.default, { addItem: this.consultGuru }),
+        _react2.default.createElement(_addUserWeight2.default, { UserWeight: this.consultGuru }),
         _react2.default.createElement(_UserList2.default, { list: this.state.list })
       );
     }

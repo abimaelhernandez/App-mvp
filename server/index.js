@@ -20,9 +20,10 @@ app.get('/showme', (req, res ) => res.send('Hello World'));
 
 app.post('/showme',function(req,res){
 
-let height = req.body.height;
-let name = req.body.name;
-
+let height = req.body.Height;
+let name = req.body.Name;
+console.log('hey'+ req.body.Height)
+console.log('hey ' + req.body.Name);
 if(!name) {
   res.sendStatus(400);
 }else {
